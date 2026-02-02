@@ -79,6 +79,11 @@ section, .welcome {
     font-weight: 700;
 }
 
+.sale-personal {
+    font-size: 18px;
+    font-weight: 700;
+}
+
 .info-block, .services-list, .stock-list {
     width: 100%;
 }
@@ -131,4 +136,8 @@ section, .welcome {
     align-items: center;
     background-color: rgb(212, 247, 247);
     padding: 20px 10px;
+}
+
+span {
+    color: red;
 }

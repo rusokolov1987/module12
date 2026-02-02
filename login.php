@@ -2,6 +2,7 @@
     require_once './lib/scripts.php';
 
     if (isset($_COOKIE['date'])) setcookie ("date", "", time() - 3600);
+     if (isset($_COOKIE['time'])) setcookie ("time", "", time() - 3600);
 
     $userName = $_POST['login']?? '';
     $userPswd = $_POST['password']?? '';

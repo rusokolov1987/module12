@@ -17,7 +17,10 @@
             setcookie(name: 'date', value: $date);
             header('Location: index.php');
         }
-
+        if (!isset($_COOKIE['time'])) {    
+            $currentTime = time();
+            setcookie(name: 'time', value: $currentTime);
+        }
         $currentDate = date('Y-m-d');
 ?>
     <!DOCTYPE html>
@@ -83,6 +86,22 @@
                 </div>
             <?php
                     }
+                }
+            ?>
+                <div class="info-block">
+                    <p class="sale-personal">Вам доступна персональная скидка в 20 %. Закончится через:
+                
+            <?php
+                if (isset($_COOKIE['time'])) {
+                    $entryTime = $_COOKIE['time'];
+                    $date = explode('-', date('Y-m-d', $entryTime));
+                    $time = explode(':', date('H:i:s', $entryTime));
+                    $date[2] += 1;
+                    $diff = date_diff(new DateTime($date[0].'-'.$date[1].'-'.$date[2].' '.$time[0].':'.$time[1].':'.$time[2]), new DateTime(date('Y-m-d H:i:s', time())));
+            ?>
+                    <span><?=$diff->h?> ч. <?=$diff->i?> м. <?=$diff->s?> с.</span></p>
+                </div>
+            <?php
                 }
             ?>
             </section>
